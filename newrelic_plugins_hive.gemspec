@@ -5,7 +5,7 @@ require 'newrelic_plugins_hive/version'
 
 Gem::Specification.new do |spec|
   spec.name        = 'newrelic_plugins_hive'
-  spec.version     = NewreliPluginsHive::VERSION
+  spec.version     = NewrelicPluginsHive::VERSION
   spec.authors     = ['Elad Maimon']
   spec.email       = ['elad.maimon@klarna.com']
   spec.description = %q{This agent consolidates and manages multiple New Relic plugins. It pulls the agents that defined in .yml file and run them all in one process.}
