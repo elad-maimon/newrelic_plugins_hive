@@ -10,7 +10,7 @@ module NewRelicPluginsHive
     def install_plugin(name, options)
       puts "Installing plugin #{name}..."
       
-      validate_plugin_source
+      validate_plugin_source(options)
       download_and_extract(name, options)
     end
     
@@ -20,7 +20,7 @@ module NewRelicPluginsHive
       raise "Wget must be installed on your machine. For more help: http://www.gnu.org/software/wget/" unless `wget -V` =~ /^GNU Wget/
     end
 
-    def validate_plugin_source
+    def validate_plugin_source(options)
       raise "\tMust specify github source for plugin #{name}" unless options[:github] =~ /^https:\/\/github.com/
     end
 
@@ -32,7 +32,7 @@ module NewRelicPluginsHive
       
       raise "\tAgent path must exists and be unique in plugin" unless full_agent_path.size == 1
 
-      `unzip -p temp/#{name}.zip "#{full_agent_path.first}" > plugins/#{options[:agent_path]}`
+      `unzip -p temp/#{name}.zip "#{full_agent_path.first}" > plugins/#{name}.rb`
     end
   end
   
