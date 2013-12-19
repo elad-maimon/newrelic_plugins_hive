@@ -21,7 +21,6 @@ module NewRelicPluginsHive
       FileUtils.mkdir_p(File.dirname dst)
       FileUtils.cp src, dst
     end
-
   end
 
 end
