@@ -1,0 +1,4 @@
+source 'https://rubygems.org'
+
+gem 'newrelic_plugins_hive'
+gem 'newrelic_plugin'

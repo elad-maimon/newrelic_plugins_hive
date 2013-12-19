@@ -1,0 +1,11 @@
+*.orig
+*~
+*.gem
+.DS_Store
+.bundle
+Gemfile.lock
+pkg/*
+
+config/*
+temp/*
+plugins/*
