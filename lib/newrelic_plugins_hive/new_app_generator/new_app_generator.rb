@@ -1,4 +1,4 @@
-require 'newrelic_plugin'
+require 'fileutils'
 
 module NewRelicPluginsHive
 
