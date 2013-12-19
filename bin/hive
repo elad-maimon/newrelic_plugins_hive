@@ -20,17 +20,13 @@ opts = Slop.parse(ARGV, :help => true) do
     on :d, :daemon=, 'Daemonizing options. Use: run, start, stop, restart, status'
     
     run do |opts, args|
-      NewRelicPluginsHive.run
-      Daemons.run(File.dirname(__FILE__) + '/kapara_agent')
+      if opts[:daemon]
+        ARGV.clear
+        ARGV.push(opts[:daemon])
+        Daemons.run(File.dirname(__FILE__) + '/hive_daemon_wrapper')
+      else
+        NewRelicPluginsHive.run
+      end
     end
   end
-end
-
-init_file = File.expand_path("../../config/initializers/#{component}.rb", __FILE__)
-
-if opts[:daemon]
-  ARGV.push(opts[:daemon])
-  Daemons.run(init_file)
-else
-  require init_file
 end
