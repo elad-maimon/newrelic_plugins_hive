@@ -1,5 +1,6 @@
 require 'newrelic_plugins_hive/version'
 require 'newrelic_plugins_hive/configuration'
+require 'newrelic_plugins_hive/new_app_generator/new_app_generator'
 require 'newrelic_plugins_hive/downloader'
 require 'newrelic_plugins_hive/bypass_setup_and_run'
 
@@ -8,6 +9,10 @@ module NewRelicPluginsHive
   class << self
     def config
       @configuration ||= Configuration.new
+    end
+
+    def generate_new_app(path)
+      NewAppGenerator.generate_new_app(path)
     end
     
     def install

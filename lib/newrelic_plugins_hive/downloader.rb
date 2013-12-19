@@ -3,13 +3,11 @@ module NewRelicPluginsHive
   class Downloader
     def initialize
       validate_wget_exists
-      `mkdir -p temp`
-      `mkdir -p plugins`
+      FileUtils.mkdir_p 'temp'
+      FileUtils.mkdir_p 'plugins'
     end
     
     def install_plugin(name, options)
-      require 'pry'
-      binding.pry
       puts "Installing plugin #{name}..."
       
       validate_plugin_source

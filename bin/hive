@@ -8,11 +8,22 @@ require 'slop'
 require 'newrelic_plugins_hive'
 
 opts = Slop.parse(ARGV, :help => true) do
-  on :v, 'Print the version' do
-    puts "NewRelic Plugins Hive version #{NewRelicPluginsHive::VERSION}"
+  on :v, :version, 'Print the version' do
+    puts "NewRelic Plugins Hive, version #{NewRelicPluginsHive::VERSION}"
+  end
+
+  command :new do
+    banner <<-EOS
+      Usage: hive new APP_PATH
+      Creates NewRelic Plugins Hive application with a default directory structure at the path you specify'
+    EOS
+    
+    run { |opts, args| NewRelicPluginsHive.generate_new_app ARGV[1] }
   end
 
   command :install do
+    banner 'Install the plugins that defined in config/newrelic_hive.yml'
+    
     run { |opts, args| NewRelicPluginsHive.install }
   end
 

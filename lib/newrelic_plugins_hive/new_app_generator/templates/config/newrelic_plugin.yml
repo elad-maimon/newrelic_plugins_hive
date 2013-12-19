@@ -1,0 +1,19 @@
+# This configuration file holds examples for all plugins.
+# You only need to add the configuration of each plugin under 'agents', as they are appeared in the 'template_newrelic_plugin.yml' of your plugin
+newrelic:
+  # TODO: Update the license_key information with the license key for your New Relic account.
+  license_key: 'YOUR_LICENSE_KEY_HERE'
+
+  # Set to '1' for verbose output, remove for normal output.
+  verbose: 1
+
+agents:
+  # TODO: Add here the agent configuration data of each of your plugins.
+  # For example, if you want to run newrelic_sidekiq_agent (https://github.com/mscifo/newrelic_sidekiq_agent)
+  # then you should add those lines:
+
+  # sidekiq_status_agent:
+  #   -
+  #     instance_name: "instance_name"
+  #     uri: "uri"
+  #     namespace: "namespace"
