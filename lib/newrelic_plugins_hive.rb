@@ -12,10 +12,19 @@ module NewRelicPluginsHive
     
     def install
       downloader = Downloader.new
-      
-      config.plugins.each do |name, options|
-        downloader.install_plugin(name, options)
-      end
+      config.plugins.each { |name, options| downloader.install_plugin(name, options) }
+    end
+    
+    def run
+      require "rubygems"
+      require "bundler/setup"
+
+      Dir['plugins/*'].each { |file| require file }
+
+      require "newrelic_plugin"
+
+      NewRelic::Plugin::Config.config_file = File.dirname(__FILE__) + "/config/newrelic_plugin.yml"
+      NewRelic::Plugin::Run.orig_setup_and_run
     end
   end
 end
