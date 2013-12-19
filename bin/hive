@@ -1,0 +1,36 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'bundler/setup'
+
+require 'daemons'
+require 'slop'
+
+require 'newrelic_plugins_hive'
+
+opts = Slop.parse(ARGV, :help => true) do
+  on :v, 'Print the version' do
+    puts "NewRelic Plugins Hive version #{NewRelicPluginsHive::VERSION}"
+  end
+
+  command :install do
+    run { |opts, args| NewRelicPluginsHive.install }
+  end
+
+  command :run do
+    on :d, :daemon=, 'Daemonizing options. Use: run, start, stop, restart, status'
+    
+    run do |opts, args|
+      NewRelicPluginsHive.run
+      Daemons.run(File.dirname(__FILE__) + '/kapara_agent')
+    end
+  end
+end
+
+init_file = File.expand_path("../../config/initializers/#{component}.rb", __FILE__)
+
+if opts[:daemon]
+  ARGV.push(opts[:daemon])
+  Daemons.run(init_file)
+else
+  require init_file
+end

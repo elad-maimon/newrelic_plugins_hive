@@ -16,9 +16,6 @@ module NewRelicPluginsHive
     end
     
     def run
-      require "rubygems"
-      require "bundler/setup"
-
       Dir['plugins/*'].each { |file| require file }
 
       require "newrelic_plugin"
@@ -27,4 +24,5 @@ module NewRelicPluginsHive
       NewRelic::Plugin::Run.orig_setup_and_run
     end
   end
+
 end
