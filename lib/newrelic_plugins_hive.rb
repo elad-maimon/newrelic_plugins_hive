@@ -21,11 +21,11 @@ module NewRelicPluginsHive
     end
     
     def run
-      Dir['plugins/*'].each { |file| require file }
+      Dir['plugins/*'].each { |file| require "#{Dir.pwd}/#{file}" }
 
       require "newrelic_plugin"
 
-      NewRelic::Plugin::Config.config_file = File.dirname(__FILE__) + "/config/newrelic_plugin.yml"
+      NewRelic::Plugin::Config.config_file = Dir.pwd + "/config/newrelic_plugin.yml"
       NewRelic::Plugin::Run.orig_setup_and_run
     end
   end
