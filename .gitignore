@@ -5,3 +5,7 @@
 .bundle
 Gemfile.lock
 pkg/*
+
+config/*
+temp/*
+plugins/*
