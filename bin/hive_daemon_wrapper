@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
-require 'rubygems'
-require 'bundler/setup'
 require 'newrelic_plugins_hive'
 
+Dir.chdir(ENV['PWD'])
 NewRelicPluginsHive.run
