@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NewRelicPluginsHive do
+describe 'RunWrapper' do
   before { NewRelicPluginsHive::RunWrapper.bypass_run }
 
   subject { ::NewRelic::Plugin::Run }
