@@ -1,4 +1,4 @@
-# NewRelic Plugins Hive ![Build Status](https://api.travis-ci.org/elad-maimon/newrelic_plugins_hive.png?branch=master,develop) ![Coverage Status](https://s3.amazonaws.com/assets.coveralls.io/badges/coveralls_unknown.png)
+# NewRelic Plugins Hive [![Build Status](https://api.travis-ci.org/elad-maimon/newrelic_plugins_hive.png?branch=master,develop)](https://api.travis-ci.org/elad-maimon/newrelic_plugins_hive.png?branch=master,develop) [![Coverage Status](https://coveralls.io/repos/elad-maimon/newrelic_plugins_hive/badge.png?branch=master)](https://coveralls.io/r/elad-maimon/newrelic_plugins_hive?branch=master,develop)
 
 Without this gem, if you're using more then one plugin for NewRelic you need to download each plugin, configure it in different files and repositories, deploy it separately and run different process for each plugin (including monitor those processes etc...)
 NewRelic Plugins Hive allow you to easily download, configure and deploy multiple NewRelic plugins and run them all in one process!
